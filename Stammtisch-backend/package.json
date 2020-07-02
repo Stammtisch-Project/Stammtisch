@@ -9,6 +9,7 @@
   "author": "Simon Babovic",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "merge": "^1.2.1"
   }

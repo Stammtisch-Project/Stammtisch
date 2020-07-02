@@ -4,7 +4,12 @@ import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 export default function App() {
 	const [helloWorldMessage, setHelloWorldMessage] = useState("");
 
-	// TODO: query and set the helloWorldMessage from the server
+	// fetch the helloWorldMessage from the server and set it
+	fetch("http://localhost:8090/hello-stammtisch")
+		.then((response) => response.text())
+		.then((text) => {
+			setHelloWorldMessage(text);
+		});
 
 	function sendMessage() {
 		// TODO: don't log it, but write it to the server
