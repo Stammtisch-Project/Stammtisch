@@ -1,17 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import { StyleSheet, View, TextInput, Button } from "react-native";
 
 export default function App() {
 	const [helloWorldMessage, setHelloWorldMessage] = useState("");
 	const [serverMessage, setServerMessage] = useState("");
 
-	// fetch the helloWorldMessage from the server and set it
+	// fetch the message from the server and set it
+	function fetchMessage() {
+		fetch("http://localhost:8090/hello-stammtisch")
+			.then((response) => response.text())
+			.then((text) => {
+				setServerMessage(text);
+			});
+	}
+
+	// initially load data from the server
 	useEffect(() => {
 		fetchMessage();
 	}, []);
 
+	// get fetch the message from the server
 	function sendMessage() {
-		// TODO: don't log it, but write it to the server
 		fetch("http://localhost:8090/hello-stammtisch", {
 			method: "POST",
 			headers: {
@@ -19,17 +28,10 @@ export default function App() {
 			},
 			body: JSON.stringify({ message: helloWorldMessage }),
 		}).then(() => {
+			// after new message is written, fetch the message from the server
 			fetchMessage();
 		});
 		setHelloWorldMessage("");
-	}
-
-	function fetchMessage() {
-		fetch("http://localhost:8090/hello-stammtisch")
-			.then((response) => response.text())
-			.then((text) => {
-				setServerMessage(text);
-			});
 	}
 
 	return (
