@@ -11,6 +11,7 @@ const setup = (app) => {
 		}
 		res.end();
 	});
+	console.log("luk");
 };
 
 module.exports = { setup };

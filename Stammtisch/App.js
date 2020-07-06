@@ -13,7 +13,8 @@ export default function App() {
 			.then((response) => response.text())
 			.then((text) => {
 				setServerMessage(text);
-			}).catch((err) => {
+			})
+			.catch((err) => {
 				console.log(err);
 			});
 	}
@@ -46,7 +47,10 @@ export default function App() {
 				onChangeText={(text) => setHelloWorldMessage(text)}
 				value={helloWorldMessage}
 			></TextInput>
-			<Button onPress={sendMessage} title="Send message to server"></Button>
+			<Button
+				onPress={sendMessage}
+				title="Send message to server"
+			></Button>
 		</View>
 	);
 }
