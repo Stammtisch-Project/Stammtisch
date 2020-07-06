@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, TextInput, Button } from "react-native";
+import { StyleSheet, View, Text, TextInput, Button } from "react-native";
 
 export default function App() {
 	const [helloWorldMessage, setHelloWorldMessage] = useState("");
@@ -27,16 +27,14 @@ export default function App() {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({ message: helloWorldMessage }),
-		}).then(() => {
-			// after new message is written, fetch the message from the server
-			fetchMessage();
 		});
 		setHelloWorldMessage("");
 	}
 
 	return (
 		<View style={styles.container}>
-			<h3>Server says: {serverMessage}</h3>
+			<Text>Server said: {serverMessage}</Text>
+			<Button onPress={fetchMessage} title="Refresh"></Button>
 			<TextInput
 				placeholder="Enter hello world message"
 				onChangeText={(text) => setHelloWorldMessage(text)}
