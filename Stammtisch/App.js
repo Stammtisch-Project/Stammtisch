@@ -1,22 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text, TextInput, Button } from "react-native";
 
-const Config = require("./utils/config");
+const Waiter = require("./utils/waiter");
 
 export default function App() {
 	const [helloWorldMessage, setHelloWorldMessage] = useState("");
 	const [serverMessage, setServerMessage] = useState("");
 
 	// fetch the message from the server and set it
-	function fetchMessage() {
-		fetch(`http://${Config.hostname}:${Config.port}/hello-stammtisch`)
-			.then((response) => response.text())
-			.then((text) => {
-				setServerMessage(text);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+	async function fetchMessage() {
+		let variable = await Waiter.get("/hello-stammtisch");
+		setServerMessage(variable);
 	}
 
 	// initially load data from the server
@@ -25,16 +19,8 @@ export default function App() {
 	}, []);
 
 	// get fetch the message from the server
-	function sendMessage() {
-		fetch(`http://${Config.hostname}:${Config.port}/hello-stammtisch`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ message: helloWorldMessage }),
-		}).catch((err) => {
-			console.log(err);
-		});
+	async function sendMessage() {
+		await Waiter.post("/hello-stammtisch", helloWorldMessage);
 		setHelloWorldMessage("");
 	}
 
