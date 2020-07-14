@@ -1,4 +1,4 @@
-# Stammtisch
+# Setup
 
 ## How to start the server
 
@@ -14,3 +14,8 @@
 3. create a `config.js` (copy and rename `defaultConfig.js` and set your server ip address and other values)
 4. Start Expo `npm start`
 5. Click on "Run in web browser" in the sidebar
+
+## Set up Prettier
+
+1. Install the Prettier extention
+2. Set "Use Editor Config" to false `"prettier.useEditorConfig": false`
