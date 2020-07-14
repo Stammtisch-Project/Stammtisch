@@ -26,7 +26,7 @@
 2. create database `stammtisch`
 3. run `mysql -u <username> -p`
 4. run `source /path/to/stammtisch-backend/sql/database-structure.sql`
-5. add to your config:
+5. add to your `Staammtisch-backend/config.js` file:
 
 ```javascript
 
