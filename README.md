@@ -19,3 +19,21 @@
 
 1. Install the Prettier extention
 2. Set "Use Editor Config" to false `"prettier.useEditorConfig": false`
+
+## Set up database
+
+1. Install mysql
+2. create database `stammtisch`
+3. run `mysql -u <username> -p`
+4. run `source /path/to/stammtisch-backend/sql/database-structure.sql`
+5. add to your `Staammtisch-backend/config.js` file:
+
+```javascript
+
+database: {
+	host: "localhost",
+	user: "<user>",
+	password: "<password>",
+	databaseName: "stammtisch",
+}
+```
