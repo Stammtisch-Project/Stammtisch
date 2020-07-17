@@ -1,9 +1,76 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text, TextInput, Button } from "react-native";
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
 const Waiter = require("./utils/waiter");
+const Stack = createStackNavigator();
 
 export default function App() {
+	return (
+		<NavigationContainer>
+			<Stack.Navigator>
+				<Stack.Screen
+					name="ScreenSelection"
+					component={ScreenSelector}
+					options={{ title: "Geh scheissn" }}
+				/>
+				<Stack.Screen
+					name="HelloWorld"
+					component={HelloWorldScreen}
+					title="Hello World"
+				/>
+				<Stack.Screen
+					name="Login"
+					component={LoginScreen}
+					title="Login"
+				/>
+				<Stack.Screen
+					name="Registration"
+					component={RegistrationScreen}
+					title="Registration"
+				/>
+			</Stack.Navigator>
+		</NavigationContainer>
+	);
+}
+
+const ScreenSelector = function ({ navigation }) {
+	return (
+		<View>
+			<Button
+				onPress={() => navigation.navigate("HelloWorld")}
+				title="Hello World"
+			/>
+			<Button
+				onPress={() => navigation.navigate("Login")}
+				title="Login"
+			/>
+			<Button
+				onPress={() => navigation.navigate("Registration")}
+				title="Register"
+			/>
+		</View>
+	);
+};
+
+const LoginScreen = function () {
+	return (
+		<View>
+			<Text>Deis is da Login, oida!</Text>
+		</View>
+	);
+};
+const RegistrationScreen = function () {
+	return (
+		<View>
+			<Text>Registrier di, hawi!</Text>
+		</View>
+	);
+};
+
+const HelloWorldScreen = function ({ navigation }) {
 	const [helloWorldMessage, setHelloWorldMessage] = useState("");
 	const [serverMessage, setServerMessage] = useState("");
 
@@ -39,7 +106,7 @@ export default function App() {
 			></Button>
 		</View>
 	);
-}
+};
 
 const styles = StyleSheet.create({
 	container: {
