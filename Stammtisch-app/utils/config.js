@@ -1,13 +1,13 @@
-const merge = require('merge');
+const merge = require("merge");
 
 let config;
 
 if (!config) {
 	try {
-		config = require('../defaultConfig');
+		config = require("../config-default");
 	} catch (e) {}
 	try {
-		const overwrite = require('../config');
+		const overwrite = require("../config");
 		config = merge.recursive(config || {}, overwrite);
 	} catch (e) {}
 }
