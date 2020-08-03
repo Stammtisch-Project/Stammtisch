@@ -10,7 +10,6 @@ import {
 	IonInput,
 } from "@ionic/react";
 import React, { useEffect, useState } from "react";
-import "./Home.css";
 
 const Waiter = require("./../utils/waiter");
 

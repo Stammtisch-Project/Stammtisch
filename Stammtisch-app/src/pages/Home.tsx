@@ -7,7 +7,7 @@ import {
 	IonButton,
 } from "@ionic/react";
 import React from "react";
-import "./Home.css";
+import "./Home.scss";
 
 const Home: React.FC = () => {
 	return (
@@ -26,6 +26,7 @@ const Home: React.FC = () => {
 				<IonButton routerLink="/login">Login</IonButton>
 				<IonButton routerLink="/registration">Register</IonButton>
 				<IonButton routerLink="/hello-world">Hello world</IonButton>
+				<div className="test">Stierhoden</div>
 			</IonContent>
 		</IonPage>
 	);

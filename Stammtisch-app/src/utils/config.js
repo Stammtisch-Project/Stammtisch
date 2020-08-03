@@ -5,7 +5,6 @@ let config;
 if (!config) {
 	try {
 		config = require("../config-default");
-		console.log("Config", config);
 	} catch (e) {}
 	try {
 		const overwrite = require("./../config");
