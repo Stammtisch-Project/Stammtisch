@@ -1,0 +1,7 @@
+{
+  "name": "Stammtisch-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
